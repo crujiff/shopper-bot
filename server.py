@@ -53,10 +53,9 @@ while True:
                         except:
                                 message = None
                         from_ = item["message"]["from"]["id"]
+                        fname=item["message"]["from"]["first_name"]
                         if from_ in admin_users:
                                 reply= admin_user_reply(fname,message)
                         else:
                                 reply = user_reply(fname,message)
-                        fname=item["message"]["from"]["first_name"]
-                        log_on_db(from_,fname,message) #loggo sul db
-                        bot.send_message(reply,from_)#invio la rispost
+                        bot.send_message(reply,from_)
